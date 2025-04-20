@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Vocales a 'i'</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Traductor de Vocales a 'i'</h1>
+    
+    <div class="container">
+        <div class="flex-container">
+            <div class="column">
+                <label for="inputText">Introduce tu texto:</label>
+                <textarea id="inputText" placeholder="Escribe aquí el texto que quieres traducir..."></textarea>
+            </div>
+            
+            <div class="middle-column">
+                <button id="translateBtn">Traducir</button>
+                <div class="loading" id="loading">Traduciendo...</div>
+                <div class="error" id="error">Ocurrió un error al traducir. Inténtalo de nuevo.</div>
+            </div>
+            
+            <div class="column">
+                <label for="outputText">Resultado:</label>
+                <div class="result-box" id="outputText"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="arquitectura.html" target="_blank">Ver diagrama de arquitectura</a> | Proyecto de ejemplo Python + Web</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html> 

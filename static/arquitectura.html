@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura del Proyecto</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        .diagram {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .diagram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box {
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            position: relative;
+            min-width: 150px;
+            font-weight: bold;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+        .arrow {
+            position: relative;
+            width: 0;
+            height: 40px;
+            border-left: 2px dashed #666;
+            margin: 5px auto;
+        }
+        .arrow:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -5px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 8px solid #666;
+        }
+        .horizontal-arrow {
+            width: 40px;
+            height: 0;
+            border-top: 2px dashed #666;
+            margin: auto 5px;
+            position: relative;
+        }
+        .horizontal-arrow:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 8px solid #666;
+        }
+        .frontend {
+            background-color: #e3f2fd;
+            border-color: #2196F3;
+        }
+        .backend {
+            background-color: #e8f5e9;
+            border-color: #4CAF50;
+        }
+        .file {
+            background-color: #fff8e1;
+            border-color: #FFC107;
+            font-size: 0.9em;
+            padding: 8px;
+            min-width: 130px;
+        }
+        .note {
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .description {
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Arquitectura del Proyecto Traductor</h1>
+    
+    <div class="description">
+        <p>Este diagrama muestra cómo se conectan las diferentes partes del proyecto y el flujo de datos entre ellas. El proyecto sigue una arquitectura cliente-servidor simple donde el frontend (HTML/CSS/JS) se comunica con el backend (Python) mediante peticiones HTTP.</p>
+    </div>
+    
+    <div class="diagram">
+        <div class="diagram-container">
+            <div class="row">
+                <div class="box backend">Servidor Python</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box file">src/traductor.py</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="note">Procesa peticiones HTTP (GET/POST)</div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="column">
+                    <div class="box file">static/index.html</div>
+                    <div class="arrow"></div>
+                    <div class="box file">static/styles.css</div>
+                    <div class="arrow"></div>
+                    <div class="box file">static/app.js</div>
+                </div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box frontend">Interfaz de Usuario</div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Flujo de Datos</h2>
+    
+    <div class="diagram">
+        <div class="diagram-container">
+            <div class="row">
+                <div class="box frontend">Usuario escribe texto</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box file">app.js: función traducir()</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box">Petición HTTP POST → JSON</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box file">traductor.py: do_POST()</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box file">traductor.py: _traducir_texto()</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box">Respuesta HTTP ← JSON</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="row">
+                <div class="box frontend">Mostrar resultado</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="description">
+        <h2>Explicación de Componentes</h2>
+        
+        <h3>Backend (Python)</h3>
+        <ul>
+            <li><code>src/traductor.py</code>: Servidor HTTP que maneja peticiones GET para servir archivos estáticos y POST para traducir texto.</li>
+            <li>Método <code>do_GET()</code>: Sirve los archivos estáticos (HTML, CSS, JS).</li>
+            <li>Método <code>do_POST()</code>: Recibe texto para traducir, llama a la función de traducción y devuelve el resultado.</li>
+            <li>Método <code>_traducir_texto()</code>: Implementa la lógica de traducción (reemplazar vocales por 'i').</li>
+        </ul>
+        
+        <h3>Frontend (HTML/CSS/JS)</h3>
+        <ul>
+            <li><code>static/index.html</code>: Estructura de la página web.</li>
+            <li><code>static/styles.css</code>: Estilos visuales de la interfaz.</li>
+            <li><code>static/app.js</code>: Lógica de interacción y comunicación con el servidor.</li>
+            <li>Función <code>traducir()</code>: Envía el texto al servidor y actualiza la interfaz con el resultado.</li>
+            <li>Función <code>inicializarEventos()</code>: Configura los eventos de interacción (clic en botón, presionar Enter).</li>
+        </ul>
+        
+        <h3>Inicialización</h3>
+        <ul>
+            <li><code>iniciar_servidor.bat</code>: Script que inicia el servidor Python y abre el navegador.</li>
+        </ul>
+    </div>
+    
+    <div class="note">
+        <p>Haz clic en el botón "Atrás" del navegador para volver a la aplicación principal.</p>
+    </div>
+</body>
+</html> 
