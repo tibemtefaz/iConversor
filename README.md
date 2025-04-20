@@ -1,11 +1,19 @@
-# Traductor de Vocales a 'i'
+# iConversor
 
-Este es un pequeño servidor web que traduce cualquier texto reemplazando todas las vocales por la letra 'i'. El proyecto sirve como ejemplo didáctico de cómo implementar una aplicación web simple usando Python como backend y HTML/CSS/JavaScript como frontend.
+Una aplicación web minimalista que traduce texto reemplazando las vocales por la letra 'i'. Desarrollada con Python (servidor HTTP) y HTML/CSS/JavaScript (interfaz de usuario), demostrando una arquitectura cliente-servidor simple y efectiva.
+
+## Características principales
+
+🔄 Traducción instantánea de texto  
+🌐 Servidor web Python nativo sin frameworks externos  
+📱 Interfaz responsive con diseño moderno  
+📊 Diagrama de arquitectura incluido  
+🔌 Base para integración con Maya y Unreal Engine  
 
 ## Estructura del Proyecto
 
 ```
-scriptin/
+iConversor/
 ├── static/               # Archivos estáticos (Frontend)
 │   ├── index.html        # Estructura HTML de la interfaz
 │   ├── styles.css        # Estilos CSS de la aplicación
